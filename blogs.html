@@ -23,8 +23,11 @@
         .page-header p { color: #666; font-size: 1rem; font-weight: 300; }
 
         .container { max-width: 1200px; margin: 60px auto; padding: 0 20px; }
-        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
+        /* Ad Container */
+        .ad-container { text-align: center; margin: 20px auto 40px auto; display: flex; justify-content: center; overflow: hidden; }
+
+        .category-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .category-card { position: relative; height: 400px; overflow: hidden; display: flex; align-items: flex-end; text-decoration: none; border: 1px solid #eee; }
         .category-card img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .category-card:hover img { transform: scale(1.05); }
@@ -40,7 +43,6 @@
         .text-card p { color: #888; font-size: 0.9rem; margin-bottom: 30px; }
         .text-card span { color: #fff; border-bottom: 2px solid #fff; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; padding-bottom: 5px; }
 
-        .ad-space { text-align: center; padding: 30px 0; margin: 40px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; color: #ccc; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
         @media (max-width: 768px) { .navbar { padding: 15px 20px; } .page-header h1 { font-size: 1.8rem; } .category-card { height: 350px; } .text-card h2 { font-size: 2rem; } }
     </style>
 </head>
@@ -48,9 +50,7 @@
 
     <nav class="navbar">
         <a href="index.html" class="logo">BlacknWhite</a>
-        <div class="menu-icon" onclick="toggleMenu()">
-            <span></span><span></span><span></span>
-        </div>
+        <div class="menu-icon" onclick="toggleMenu()"><span></span><span></span><span></span></div>
         <div class="dropdown-menu" id="navMenu">
             <a href="index.html">Home / Clothing</a>
             <a href="blogs.html">Blogs</a>
@@ -63,16 +63,28 @@
     </header>
 
     <div class="container">
+        <!-- Adsterra 728x90 Top Banner -->
+        <div class="ad-container">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'f96edce5347f04ad69e124af5a3e443a',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"></script>
+        </div>
+
         <div class="category-grid">
             
-            <!-- Category 1: BioPedia -->
             <a href="biopedia.html" class="category-card text-card">
                 <h2>BioPedia<span>.</span></h2>
                 <p>Biographies, net worth, and lifestyle of global celebrities.</p>
                 <span>Explore Now</span>
             </a>
 
-            <!-- Category 2: Tech n Technology (Link Updated to tech.html) -->
             <a href="tech.html" class="category-card">
                 <img src="https://i.ibb.co.com/27Z2NRbs/20261102-123906.png" alt="Tech and Technology">
                 <div class="category-overlay">
@@ -82,7 +94,6 @@
                 </div>
             </a>
 
-            <!-- Category 3: Models -->
             <a href="models.html" class="category-card">
                 <img src="https://i.ibb.co.com/QvzSPd2Z/20261102-123553.png" alt="Models Photography">
                 <div class="category-overlay">
@@ -93,14 +104,24 @@
             </a>
 
         </div>
-        <div class="ad-space">[ Advertisement Space - 728x90 ]</div>
+
+        <!-- Bottom Adsterra 728x90 Banner -->
+        <div class="ad-container" style="margin-top: 40px;">
+            <script type="text/javascript">
+              atOptions = {
+                'key' : 'f96edce5347f04ad69e124af5a3e443a',
+                'format' : 'iframe',
+                'height' : 90,
+                'width' : 728,
+                'params' : {}
+              };
+            </script>
+            <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"></script>
+        </div>
     </div>
 
     <script>
-        function toggleMenu() {
-            var menu = document.getElementById("navMenu");
-            if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); }
-        }
+        function toggleMenu() { var menu = document.getElementById("navMenu"); if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); } }
     </script>
 </body>
 </html>
