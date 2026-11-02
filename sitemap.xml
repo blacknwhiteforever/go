@@ -20,7 +20,6 @@
     <loc>https://blacknwhiteforever.github.io/go/models.html</loc>
     <priority>0.8</priority>
   </url>
-  <!-- Dynamic Profiles -->
   <url>
     <loc>https://blacknwhiteforever.github.io/go/profile.html?id=ronaldo</loc>
     <priority>0.7</priority>
