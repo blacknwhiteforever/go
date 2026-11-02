@@ -10,7 +10,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: #fcfcfc; color: #111; display: flex; flex-direction: column; min-height: 100vh; }
         
-        /* Navbar */
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 100; }
         .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #000; text-decoration: none; }
         .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
@@ -20,133 +19,37 @@
         .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; font-weight: 600; }
         .dropdown-menu a:hover { color: #999; }
 
-        /* Clean Hero Section */
         .hero { text-align: center; padding: 70px 20px; background-color: #fff; border-bottom: 1px solid #eee; }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 15px; color: #111; }
         .hero p { font-size: 0.95rem; color: #777; letter-spacing: 1px; font-weight: 400; text-transform: uppercase; }
 
-        /* Main Hub Grid */
         .main-content { flex: 1; }
         .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
         
-        .hub-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-            gap: 20px; 
-        }
+        .hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         
-        /* Premium Card Design */
-        .hub-card { 
-            position: relative; 
-            height: 220px; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            display: flex; 
-            align-items: flex-end; 
-            text-decoration: none; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08); 
-            transition: transform 0.3s ease, box-shadow 0.3s ease; 
-        }
-        
-        .hub-card:hover { 
-            transform: translateY(-5px); 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-        }
-        
-        .hub-card img { 
-            position: absolute; 
-            top: 0; left: 0; width: 100%; height: 100%; 
-            object-fit: cover; 
-            transition: transform 0.5s ease; 
-        }
-        
+        .hub-card { position: relative; height: 220px; border-radius: 12px; overflow: hidden; display: flex; align-items: flex-end; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .hub-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0,0,0,0.15); }
+        .hub-card img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .hub-card:hover img { transform: scale(1.08); }
-        
-        /* Subtle Gradient Overlay */
-        .hub-card::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
-            z-index: 1;
-        }
-        
-        .hub-content { 
-            position: relative; 
-            z-index: 2; 
-            padding: 20px; 
-            color: #fff; 
-            width: 100%;
-        }
-        
-        .hub-content h2 { 
-            font-family: 'Montserrat', sans-serif; 
-            font-size: 1.4rem; 
-            font-weight: 800; 
-            letter-spacing: 1px; 
-            margin-bottom: 5px; 
-        }
-        
-        .hub-content p { 
-            font-size: 0.75rem; 
-            color: #ccc; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            font-weight: 500;
-        }
+        .hub-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%); z-index: 1; }
+        .hub-content { position: relative; z-index: 2; padding: 20px; color: #fff; width: 100%; }
+        .hub-content h2 { font-family: 'Montserrat', sans-serif; font-size: 1.4rem; font-weight: 800; letter-spacing: 1px; margin-bottom: 5px; }
+        .hub-content p { font-size: 0.75rem; color: #ccc; text-transform: uppercase; letter-spacing: 2px; font-weight: 500; }
 
-        /* Professional SEO Footer */
-        footer { 
-            background: #fff; 
-            border-top: 1px solid #eee; 
-            padding: 30px 20px; 
-            text-align: center; 
-            margin-top: auto; 
-        }
-        
-        .footer-links { 
-            display: flex; 
-            justify-content: center; 
-            gap: 15px 25px; 
-            margin-bottom: 15px; 
-            flex-wrap: wrap; 
-        }
-        
-        .footer-links a { 
-            color: #888; 
-            text-decoration: none; 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            transition: color 0.3s; 
-            font-weight: 600;
-        }
-        
+        footer { background: #fff; border-top: 1px solid #eee; padding: 30px 20px; text-align: center; margin-top: auto; }
+        .footer-links { display: flex; justify-content: center; gap: 15px 25px; margin-bottom: 15px; flex-wrap: wrap; }
+        .footer-links a { color: #888; text-decoration: none; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; font-weight: 600; }
         .footer-links a:hover { color: #000; }
-        
-        .footer-text { 
-            color: #aaa; 
-            font-size: 0.65rem; 
-            letter-spacing: 1px;
-        }
+        .footer-text { color: #aaa; font-size: 0.65rem; letter-spacing: 1px; }
 
-        /* Responsive Grid for Mobile (2 columns) */
         @media (max-width: 768px) {
             .navbar { padding: 15px 20px; }
             .hero { padding: 50px 20px; }
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 0.8rem; }
-            
-            .hub-grid { 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 12px; 
-            }
-            
-            .hub-card { 
-                height: 180px; 
-                border-radius: 8px;
-            }
-            
+            .hub-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .hub-card { height: 180px; border-radius: 8px; }
             .hub-content { padding: 12px; }
             .hub-content h2 { font-size: 1rem; }
             .hub-content p { font-size: 0.6rem; letter-spacing: 1px; }
@@ -176,26 +79,22 @@
     <div class="main-content">
         <div class="container">
             <div class="hub-grid">
-                
-                <!-- 1. BnW Shop (Shopping Bag Image) -->
                 <a href="shop.html" class="hub-card">
-                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?q=80&w=600&auto=format&fit=crop" alt="BnW Shop">
+                    <img src="https://i.ibb.co.com/QvzSPd2Z/20261102-123553.png" alt="BnW Shop">
                     <div class="hub-content">
                         <h2>BnW Shop</h2>
                         <p>Clothing & Tech</p>
                     </div>
                 </a>
 
-                <!-- 2. PhotoPic (Modeling Image) -->
                 <a href="photopic.html" class="hub-card">
-                    <img src="https://i.ibb.co.com/NgGtthLq/1.jpg" alt="PhotoPic">
+                    <img src="https://i.ibb.co.com/NgGtthLt/1.jpg" alt="PhotoPic">
                     <div class="hub-content">
                         <h2>PhotoPic</h2>
                         <p>Visual Inspiration</p>
                     </div>
                 </a>
 
-                <!-- 3. BioPedia -->
                 <a href="biopedia.html" class="hub-card">
                     <img src="https://i.ibb.co.com/bRWfGHm1/Ronaldo-The-Legent.jpg" alt="BioPedia">
                     <div class="hub-content">
@@ -204,7 +103,6 @@
                     </div>
                 </a>
 
-                <!-- 4. Tech Tools -->
                 <a href="tech.html" class="hub-card">
                     <img src="https://i.ibb.co.com/27Z2NRbs/20261102-123906.png" alt="Tech Tools">
                     <div class="hub-content">
@@ -213,7 +111,6 @@
                     </div>
                 </a>
 
-                <!-- 5. Blogs -->
                 <a href="blogs.html" class="hub-card">
                     <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=600&auto=format&fit=crop" alt="Blogs">
                     <div class="hub-content">
@@ -221,12 +118,10 @@
                         <p>Articles & News</p>
                     </div>
                 </a>
-
             </div>
         </div>
     </div>
 
-    <!-- Clean SEO Footer -->
     <footer>
         <div class="footer-links">
             <a href="index.html">Home</a>
@@ -236,13 +131,14 @@
             <a href="biopedia.html">BioPedia</a>
             <a href="tech.html">Tech Tools</a>
         </div>
-        <div class="footer-text">
-            &copy; 2026 BlacknWhite. All rights reserved.
-        </div>
+        <div class="footer-text">&copy; 2026 BlacknWhite. All rights reserved.</div>
     </footer>
 
     <script>
         function toggleMenu() { var menu = document.getElementById("navMenu"); if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); } }
     </script>
+
+    <!-- GLOBAL ADS SCRIPT -->
+    <script src="ads.js"></script>
 </body>
 </html>

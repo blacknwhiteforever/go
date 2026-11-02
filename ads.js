@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Inject Modal HTML dynamically into every page
     const modalHTML = `
         <div class="global-modal-overlay" id="globalAdModal">
             <div class="global-modal-box">
@@ -34,7 +33,6 @@ document.addEventListener("DOMContentLoaded", function() {
     function showAdModal() {
         if (isModalOpen) return;
         isModalOpen = true;
-        
         modal.classList.add("active");
         document.body.style.overflow = 'hidden'; 
 
@@ -44,33 +42,26 @@ document.addEventListener("DOMContentLoaded", function() {
         let countdownInterval = setInterval(function() {
             timeLeft--;
             timerElement.innerText = timeLeft;
-
             if (timeLeft <= 0) {
                 clearInterval(countdownInterval);
                 modal.classList.remove("active");
                 document.body.style.overflow = 'auto'; 
                 isModalOpen = false;
-                
-                // Save the time when ad was finished to localStorage
                 localStorage.setItem('bnw_last_ad_time', Date.now());
             }
         }, 1000);
     }
 
-    // 2. Global Timer Logic
-    const COOLDOWN = 1200000; // 20 minutes in milliseconds
+    const COOLDOWN = 1200000; // 20 minutes
     let lastAdTime = localStorage.getItem('bnw_last_ad_time');
 
     if (!lastAdTime) {
-        // First time entering the site
-        setTimeout(showAdModal, 15000); // 15s entry delay
+        setTimeout(showAdModal, 15000);
     } else {
         let timePassed = Date.now() - parseInt(lastAdTime);
         if (timePassed >= COOLDOWN) {
-            // More than 20 mins passed since last ad
             setTimeout(showAdModal, 15000);
         } else {
-            // Less than 20 mins, set timer for the remaining time
             let timeLeft = COOLDOWN - timePassed;
             setTimeout(() => {
                 if (document.visibilityState === 'visible' && !isModalOpen) {
@@ -80,7 +71,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // 3. Recurring 20 min interval for long sessions
     setInterval(() => {
         if (document.visibilityState === 'visible' && !isModalOpen) {
             let lastTime = localStorage.getItem('bnw_last_ad_time');
@@ -88,5 +78,5 @@ document.addEventListener("DOMContentLoaded", function() {
                 showAdModal();
             }
         }
-    }, 60000); // Check every minute
+    }, 60000); 
 });
