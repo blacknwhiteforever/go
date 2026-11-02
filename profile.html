@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading Profile... | BlacknWhite</title>
+    <meta name="description" content="Read detailed biography and statistics on BlacknWhite.">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #111; }
+        
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #000; color: #fff; z-index: 100; position: sticky; top: 0; }
+        .nav-left { display: flex; align-items: center; gap: 15px; }
+        .back-btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: #fff; transition: transform 0.2s; }
+        .back-btn:hover { transform: translateX(-3px); }
+        .back-btn svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #fff; text-decoration: none; }
+        .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
+        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #fff; }
+        .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .dropdown-menu.active { display: flex; }
+        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; }
+
+        .bio-header { background-color: #000; color: #fff; padding: 60px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; }
+        .bio-header img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid #fff; background: #222; }
+        .bio-header-text h1 { font-size: 3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+        .bio-header-text p { font-size: 1.2rem; color: #aaa; text-transform: uppercase; letter-spacing: 2px; }
+
+        .container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        .section-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin: 30px 0 20px 0; border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px; }
+        .bio-content p { font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 20px; }
+        .accolades-list { margin-left: 20px; margin-bottom: 30px; }
+        .accolades-list li { font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 10px; }
+
+        .ad-container { text-align: center; margin: 30px auto; display: flex; justify-content: center; overflow: hidden; }
+        
+        .loading { text-align: center; font-size: 1.5rem; margin: 100px 0; color: #888; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .bio-header { flex-direction: column; text-align: center; padding: 40px 20px; gap: 20px; }
+            .bio-header img { width: 180px; height: 180px; }
+            .bio-header-text h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="biopedia.html" class="back-btn" title="Go Back"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></a>
+            <a href="index.html" class="logo">BlacknWhite</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        <div class="dropdown-menu" id="navMenu">
+            <a href="index.html">Home / Clothing</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="biopedia.html">BioPedia</a>
+        </div>
+    </nav>
+
+    <div id="profileContent">
+        <div class="loading">Loading Profile Data...</div>
+    </div>
+
+    <script>
+        function toggleMenu() { var menu = document.getElementById("navMenu"); if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); } }
+
+        // Get ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const profileId = urlParams.get('id');
+
+        if (!profileId) {
+            document.getElementById("profileContent").innerHTML = "<div class='loading'>Error: No Profile ID provided.</div>";
+        } else {
+            // Fetch Data
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    const person = data.find(p => p.id === profileId);
+                    
+                    if (!person) {
+                        document.getElementById("profileContent").innerHTML = "<div class='loading'>Profile not found.</div>";
+                        return;
+                    }
+
+                    // 1. Update SEO Meta Tags
+                    document.title = person.name + " | BlacknWhite";
+                    document.querySelector('meta[name="description"]').setAttribute("content", person.about.substring(0, 150));
+
+                    // 2. Inject JSON-LD Schema for Google Indexing
+                    const schema = {
+                        "@context": "https://schema.org",
+                        "@type": "Person",
+                        "name": person.name,
+                        "jobTitle": person.profession,
+                        "image": person.image,
+                        "description": person.about
+                    };
+                    const script = document.createElement('script');
+                    script.type = "application/ld+json";
+                    script.text = JSON.stringify(schema);
+                    document.head.appendChild(script);
+
+                    // 3. Build HTML
+                    let html = `
+                        <header class="bio-header">
+                            <img src="${person.image}" alt="${person.name}">
+                            <div class="bio-header-text">
+                                <h1>${person.name}</h1>
+                                <p>${person.profession}</p>
+                            </div>
+                        </header>
+
+                        <div class="container">
+                            <!-- Adsterra Top Banner -->
+                            <div class="ad-container">
+                                <script type="text/javascript">
+                                  atOptions = { 'key' : 'f96edce5347f04ad69e124af5a3e443a', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                                <\/script>
+                                <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"><\/script>
+                            </div>
+
+                            <div class="bio-content">
+                                <div class="section-title">About</div>
+                                <p>${person.about}</p>
+                    `;
+
+                    person.sections.forEach(section => {
+                        html += `<div class="section-title">${section.title}</div><ul class="accolades-list">`;
+                        section.content.forEach(item => {
+                            html += `<li>${item}</li>`;
+                        });
+                        html += `</ul>`;
+                    });
+
+                    html += `
+                            </div>
+                            <!-- Adsterra Bottom Banner -->
+                            <div class="ad-container">
+                                <script type="text/javascript">
+                                  atOptions = { 'key' : 'f96edce5347f04ad69e124af5a3e443a', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+                                <\/script>
+                                <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"><\/script>
+                            </div>
+                        </div>
+                    `;
+
+                    document.getElementById("profileContent").innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading data:', error);
+                    document.getElementById("profileContent").innerHTML = "<div class='loading'>Failed to load profile data.</div>";
+                });
+        }
+    </script>
+</body>
+</html>

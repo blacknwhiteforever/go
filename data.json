@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ronaldo",
+    "name": "Cristiano Ronaldo",
+    "profession": "Footballer • CR7",
+    "image": "https://i.ibb.co.com/bRWfGHm1/Ronaldo-The-Legent.jpg",
+    "about": "Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985) is widely regarded as one of the greatest football players of all time. The Portuguese forward captains both the Saudi Pro League club Al-Nassr and the Portugal national team.",
+    "sections": [
+      {
+        "title": "Current Career & Statistics",
+        "content": [
+          "Total Career Goals: 985 official goals in 1,343 senior appearances.",
+          "Current Club Form: Leading the line for Al-Nassr with 8 goals in 9 matches.",
+          "International Record: All-time top scorer in men's international football history with 146 goals."
+        ]
+      },
+      {
+        "title": "Key Accolades & Trophies",
+        "content": [
+          "5x Ballon d'Or Winner (2008, 2013, 2014, 2016, 2017).",
+          "5x UEFA Champions League Winner.",
+          "UEFA Euro 2016 Champion."
+        ]
+      }
+    ]
+  },
+  {
+    "id": "shanaya",
+    "name": "Shanaya Kapoor",
+    "profession": "Actress • Model",
+    "image": "https://i.ibb.co.com/4gZLpG7Q/Shanaya-Kapoor-4.jpg",
+    "about": "Shanaya Kapoor (born 3 November 1999) is an Indian actress, model, and entrepreneur. She is the daughter of Bollywood actor-producer Sanjay Kapoor and jewelry designer Maheep Kapoor.",
+    "sections": [
+      {
+        "title": "Film & Web Career",
+        "content": [
+          "Theatrical Debut (2025): Starred in Aankhon Ki Gustaakhiyan opposite Vikrant Massey.",
+          "Streaming Success (2026): Found success on Netflix with the survival thriller Tu Yaa Main.",
+          "Upcoming Projects: Student of the Year: After Dark and a zombie comedy with Tiger Shroff."
+        ]
+      },
+      {
+        "title": "Family Connections",
+        "content": [
+          "Father: Sanjay Kapoor (Actor).",
+          "Paternal Uncles: Anil Kapoor and Boney Kapoor.",
+          "Cousins: Sonam Kapoor, Janhvi Kapoor, Khushi Kapoor, and Arjun Kapoor."
+        ]
+      }
+    ]
+  }
+]
