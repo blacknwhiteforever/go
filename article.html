@@ -3,46 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Top 5 Best Video Downloaders | BlacknWhite</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <title>Top 5 Best Free Video Downloaders | BlacknWhite</title>
+    <!-- Added Inter for clean reading, Playfair for titles -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #111; }
+        
+        /* Clean Reading Base Font */
+        body { 
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #ffffff; 
+            color: #222222; /* Softer black for reading */
+            line-height: 1.6;
+        }
         
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 100; }
         .nav-left { display: flex; align-items: center; gap: 15px; }
         .back-btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: #111; transition: transform 0.2s; }
         .back-btn:hover { transform: translateX(-3px); }
         .back-btn svg { width: 24px; height: 24px; stroke: #111; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #000; text-decoration: none; }
+        .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #000; text-decoration: none; font-family: 'Inter', sans-serif; }
         .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
         .menu-icon span { display: block; width: 25px; height: 2px; background-color: #000; }
         .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
         .dropdown-menu.active { display: flex; }
-        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; }
+        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; padding: 5px 0; font-weight: 600; }
 
         .article-header { text-align: center; padding: 60px 20px; background-color: #fafafa; border-bottom: 1px solid #eee; }
-        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; margin-bottom: 15px; line-height: 1.2; }
-        .meta { color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .article-header h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 15px; 
+            line-height: 1.3; 
+            color: #000;
+        }
+        .meta { color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
 
-        .container { max-width: 800px; margin: 40px auto; padding: 0 20px 60px 20px; }
+        .container { max-width: 750px; margin: 40px auto; padding: 0 20px 80px 20px; }
         
-        .article-content p { font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 25px; }
+        /* Clean Paragraph Styles */
+        .article-content p { 
+            font-size: 1.1rem; 
+            line-height: 1.8; /* Best for mobile reading */
+            color: #333; 
+            margin-bottom: 24px; 
+        }
         
-        .tool-item { border: 1px solid #eee; padding: 25px; margin-bottom: 25px; border-radius: 8px; background: #fafafa; }
-        .tool-item h2 { font-size: 1.4rem; margin-bottom: 10px; font-weight: 600; color: #000; }
-        .tool-item p { font-size: 0.95rem; color: #555; margin-bottom: 20px; line-height: 1.6; }
+        .tool-item { border: 1px solid #f0f0f0; padding: 25px; margin-bottom: 30px; border-radius: 12px; background: #fcfcfc; }
+        .tool-item h2 { font-family: 'Inter', sans-serif; font-size: 1.4rem; margin-bottom: 10px; font-weight: 700; color: #000; }
+        .tool-item p { font-size: 1rem; color: #555; margin-bottom: 20px; line-height: 1.6; }
         
+        /* Modern Buttons */
         .button-group { display: flex; gap: 15px; flex-wrap: wrap; }
-        .btn-download { flex: 1; text-align: center; background: #000; color: #fff; padding: 14px 20px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; border: 2px solid #000; transition: 0.3s; cursor: pointer; border-radius: 4px; }
+        .btn-download, .btn-gosite { 
+            flex: 1; 
+            text-align: center; 
+            padding: 14px 20px; 
+            text-decoration: none; 
+            font-size: 0.9rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            font-weight: 600; 
+            border-radius: 6px; 
+            transition: 0.3s; 
+            cursor: pointer; 
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-download { background: #000; color: #fff; border: 2px solid #000; }
         .btn-download:hover { background: #333; }
-        .btn-gosite { flex: 1; text-align: center; background: #fff; color: #000; padding: 14px 20px; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; font-weight: 600; border: 2px solid #000; transition: 0.3s; cursor: pointer; border-radius: 4px; }
-        .btn-gosite:hover { background: #f0f0f0; }
+        .btn-gosite { background: #fff; color: #000; border: 2px solid #e0e0e0; }
+        .btn-gosite:hover { background: #f5f5f5; border-color: #000; }
 
         @media (max-width: 768px) {
             .navbar { padding: 15px 20px; }
             .article-header h1 { font-size: 2rem; }
-            .button-group { flex-direction: column; }
+            .article-content p { font-size: 1.05rem; }
+            .button-group { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -121,8 +158,7 @@
         function toggleMenu() { var menu = document.getElementById("navMenu"); if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); } }
     </script>
     
-    <!-- GLOBAL ADS SCRIPT -->
-    
-<script src="ads.js"></script>
+    <!-- Global Ads Script -->
+    <script src="ads.js"></script>
 </body>
 </html>
