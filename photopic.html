@@ -46,10 +46,14 @@
 
         .photo-card img { width: 100%; display: block; transition: transform 0.5s ease; }
         .photo-card:hover img { transform: scale(1.05); }
-        .photo-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 40%); opacity: 0; transition: opacity 0.3s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; color: #fff; }
+        .photo-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 50%); opacity: 0; transition: opacity 0.3s ease; display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; color: #fff; }
         .photo-card:hover .photo-overlay { opacity: 1; }
         .photo-overlay h3 { font-size: 1.1rem; margin-bottom: 5px; font-weight: 600; }
         .photo-overlay p { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #ddd; }
+        
+        /* Unsplash Attribution Style */
+        .photo-overlay .credit { font-size: 0.65rem; color: #aaa; margin-top: 10px; text-transform: none; letter-spacing: 0; }
+        .photo-overlay .credit a { color: #fff; text-decoration: underline; }
 
         /* Sticky Ad */
         .sticky-ad-container { position: fixed; bottom: 0; left: 0; width: 100%; background: #ffffff; border-top: 1px solid #eee; box-shadow: 0 -4px 15px rgba(0,0,0,0.05); z-index: 9999; display: flex; justify-content: center; align-items: center; padding: 5px 0; transition: transform 0.3s ease; }
@@ -75,11 +79,6 @@
             .sticky-ad-wrapper { transform: scale(0.45); transform-origin: center center; width: 728px; height: 40px; }
         }
     </style>
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-<link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="favicon.svg">
-<link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -93,7 +92,7 @@
             <a href="index.html">Home</a>
             <a href="shop.html">BnW Shop</a>
             <a href="photopic.html">PhotoPic</a>
-            <a href="blogs.html">Blogs</a>
+            <a href="blogs.html">BnW Answers</a>
         </div>
     </nav>
 
@@ -144,24 +143,24 @@
             document.body.style.paddingBottom = '20px';
         }
 
-        const imageData = [
-            { id: 1, img: "https://i.ibb.co.com/NgGtthLq/1.jpg", title: "Classic Monochrome", tag: "fashion" },
-            { id: 2, img: "https://i.ibb.co.com/Gv9F9M3t/black-dress.jpg", title: "Elegant Black Dress", tag: "fashion" },
-            { id: 3, img: "https://i.ibb.co.com/4gZLpG7Q/Shanaya-Kapoor-4.jpg", title: "Bollywood Glamour", tag: "aesthetic" },
-            { id: 4, img: "https://i.ibb.co.com/H6fPXjY/Shanaya-Kapoor-3.jpg", title: "Modern Style", tag: "fashion" },
-            { id: 5, img: "https://i.ibb.co.com/Q3wwYKnd/Shanaya-Kapoor.jpg", title: "Minimalist Look", tag: "aesthetic" },
-            { id: 6, img: "https://i.ibb.co.com/SDYKCdhm/Shanaya-Kapoor-1.jpg", title: "Elegant Pose", tag: "fashion" },
-            { id: 7, img: "https://i.ibb.co.com/PsSMj08V/Shanaya-kapoor-2.jpg", title: "Street Style", tag: "fashion" },
-            { id: 8, img: "https://i.ibb.co.com/LXv8bbsK/635429828717827232.jpg", title: "Vintage Vibe", tag: "aesthetic" },
-            { id: 9, img: "https://i.ibb.co.com/qLmxs65B/image.jpg", title: "Tech Concept", tag: "tech" },
-            { id: 10, img: "https://i.ibb.co.com/Fr1wzj0/83a29fcac68c5cec1b4007ecb39c00fa.jpg", title: "Black & White", tag: "aesthetic" },
-            { id: 11, img: "https://i.ibb.co.com/vvZfq6hn/3c7ea0a2b0e078542237e3c364fabd82.jpg", title: "Futuristic AI", tag: "tech" }
-        ];
-
         const gridContainer = document.getElementById("imageGrid");
         const searchInput = document.getElementById("searchInput");
         const categoryFilter = document.getElementById("categoryFilter");
         const layoutFilter = document.getElementById("layoutFilter");
+        
+        let allPhotos = [];
+
+        // Fetch Data from JSON
+        fetch('photos.json')
+            .then(res => res.json())
+            .then(data => {
+                allPhotos = data;
+                renderImages(allPhotos);
+            })
+            .catch(err => {
+                console.error("Error loading photos:", err);
+                gridContainer.innerHTML = "<p style='text-align:center; width:100%; color:#888;'>Failed to load photos.</p>";
+            });
 
         function renderImages(data) {
             gridContainer.innerHTML = "";
@@ -177,6 +176,7 @@
                     <div class="photo-overlay">
                         <h3>${item.title}</h3>
                         <p>${item.tag}</p>
+                        <div class="credit">Photo by <a href="${item.author_link}?utm_source=blacknwhite&utm_medium=referral" target="_blank">${item.author}</a> on <a href="https://unsplash.com/?utm_source=blacknwhite&utm_medium=referral" target="_blank">Unsplash</a></div>
                     </div>
                 `;
                 gridContainer.appendChild(card);
@@ -186,7 +186,7 @@
         function filterData() {
             const searchTerm = searchInput.value.toLowerCase();
             const category = categoryFilter.value;
-            const filtered = imageData.filter(item => {
+            const filtered = allPhotos.filter(item => {
                 const matchesSearch = item.title.toLowerCase().includes(searchTerm) || item.tag.toLowerCase().includes(searchTerm);
                 const matchesCategory = category === "all" || item.tag === category;
                 return matchesSearch && matchesCategory;
@@ -206,12 +206,9 @@
         searchInput.addEventListener("input", filterData);
         categoryFilter.addEventListener("change", filterData);
         layoutFilter.addEventListener("change", switchLayout);
-        renderImages(imageData);
     </script>
     
-    <!-- Include Global Ads Script -->
-    
-<script src="ads.js"></script>
-<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
+    <!-- Global Ads Script -->
+    <script src="ads.js"></script>
 </body>
 </html>
