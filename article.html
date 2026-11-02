@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Take a Screenshot | BlacknWhite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #111; }
+        
+        /* Navbar */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); z-index: 100; }
+        .nav-left { display: flex; align-items: center; gap: 15px; }
+        .back-btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: #111; transition: transform 0.2s; }
+        .back-btn:hover { transform: translateX(-3px); }
+        .back-btn svg { width: 24px; height: 24px; stroke: #111; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #000; text-decoration: none; }
+        .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
+        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #000; }
+        .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .dropdown-menu.active { display: flex; }
+        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; }
+
+        /* Article Layout */
+        .article-header { text-align: center; padding: 60px 20px; background-color: #fafafa; border-bottom: 1px solid #eee; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 600; margin-bottom: 15px; line-height: 1.2; }
+        .meta { color: #888; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+
+        .hero-img { width: 100%; max-width: 900px; height: 450px; object-fit: cover; display: block; margin: 40px auto; border: 1px solid #eee; padding: 0 20px; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px 60px 20px; }
+        
+        .article-content p { font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 25px; font-weight: 400; }
+        .article-content h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 40px 0 20px 0; }
+        .article-content ul { margin-left: 20px; margin-bottom: 25px; }
+        .article-content li { font-size: 1.1rem; line-height: 1.8; color: #333; margin-bottom: 10px; }
+
+        .ad-space { text-align: center; padding: 30px 0; margin: 40px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; color: #ccc; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- NEW: TIMED AD MODAL STYLES --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(8px);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+        .modal-overlay.active {
+            display: flex; /* Show when active */
+        }
+        .modal-box {
+            background: #fff;
+            padding: 30px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border-radius: 8px;
+        }
+        .modal-box h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #111;
+        }
+        .modal-box p {
+            font-size: 0.95rem;
+            color: #666;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        /* Adsterra Banner Placeholder inside Modal */
+        .modal-ad-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #f0f0f0;
+            border: 2px dashed #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Countdown Text */
+        .countdown-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #000;
+            margin-bottom: 10px;
+        }
+        .countdown-text span {
+            color: #ff0000;
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .article-header h1 { font-size: 2rem; }
+            .hero-img { height: 250px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="tech.html" class="back-btn" title="Go Back"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></a>
+            <a href="index.html" class="logo">BlacknWhite</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        <div class="dropdown-menu" id="navMenu">
+            <a href="index.html">Home / Clothing</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="tech.html">Tech</a>
+        </div>
+    </nav>
+
+    <header class="article-header">
+        <h1>How to Take a Screenshot on Windows, Mac & Mobile</h1>
+        <div class="meta">Published on Nov 2, 2026 • 3 min read</div>
+    </header>
+
+    <div class="container"><div class="ad-space">[ Adsterra Banner 728x90 - Paste Code Here ]</div></div>
+
+    <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?q=80&w=1200&auto=format&fit=crop" alt="Screenshot Tutorial" class="hero-img">
+
+    <div class="container">
+        <div class="article-content">
+            <p>Taking a screenshot is one of the most common tasks we do on our devices every day. Whether you want to save a funny conversation, capture an error message, or share a moment with friends, knowing the right shortcuts is essential.</p>
+            
+            <h2>1. How to Screenshot on Windows</h2>
+            <p>If you are using Windows 10 or Windows 11, you have multiple options:</p>
+            <ul>
+                <li><strong>Print Screen (PrtScn):</strong> Press this key to copy the entire screen to your clipboard. Then paste it into Paint or Word.</li>
+                <li><strong>Windows + Shift + S:</strong> This opens the Snipping Tool, allowing you to select a specific area of the screen.</li>
+            </ul>
+
+            <h2>2. How to Screenshot on Mac</h2>
+            <p>On macOS, Apple makes it very simple:</p>
+            <ul>
+                <li><strong>Command + Shift + 3:</strong> Captures the entire screen and saves it to your desktop.</li>
+                <li><strong>Command + Shift + 4:</strong> Allows you to select a specific area.</li>
+            </ul>
+
+            <h2>3. How to Screenshot on Mobile (iOS & Android)</h2>
+            <p>For iPhone users, press the Side Button and Volume Up button simultaneously. For most Android devices, press the Power and Volume Down buttons at the same time.</p>
+            <p>Now that you know the basics, you can easily capture anything on your screen without hassle!</p>
+        </div>
+
+        <div class="ad-space">[ Adsterra Banner 728x90 - Paste Code Here ]</div>
+    </div>
+
+    <!-- ================= THE TIMED AD MODAL ================= -->
+    <div class="modal-overlay" id="adModal">
+        <div class="modal-box">
+            <h2>Support BlacknWhite</h2>
+            <p>Please wait for the ad to finish. The article will unlock automatically.</p>
+            
+            <!-- PASTE YOUR ADSTERRA 300x250 BANNER CODE HERE -->
+            <div class="modal-ad-placeholder">
+                [ Adsterra Banner 300x250 ]
+            </div>
+
+            <div class="countdown-text">Unlocking in <span id="timer">20</span> seconds...</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() { var menu = document.getElementById("navMenu"); if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); } }
+
+        // Timer Logic
+        window.onload = function() {
+            // 1. Wait 5 seconds before showing the modal
+            setTimeout(function() {
+                var modal = document.getElementById("adModal");
+                modal.classList.add("active"); // Show the modal
+                document.body.style.overflow = 'hidden'; // Stop background scrolling
+
+                // 2. Start the 20-second countdown
+                let timeLeft = 20;
+                let timerElement = document.getElementById("timer");
+
+                let countdownInterval = setInterval(function() {
+                    timeLeft--;
+                    timerElement.innerText = timeLeft;
+
+                    // 3. When it reaches 0, close modal and allow reading
+                    if (timeLeft <= 0) {
+                        clearInterval(countdownInterval);
+                        closeModal();
+                    }
+                }, 1000); // 1000ms = 1 second
+
+            }, 5000); // 5000ms = 5 seconds reading time
+        };
+
+        // Function to close modal
+        function closeModal() {
+            var modal = document.getElementById("adModal");
+            modal.classList.remove("active"); // Hide modal
+            document.body.style.overflow = 'auto'; // Enable background scrolling
+        }
+    </script>
+</body>
+</html>

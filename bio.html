@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bio | BlacknWhite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #111; }
+        
+        /* Black Navbar */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #000; color: #fff; z-index: 100; position: sticky; top: 0; }
+        
+        /* Left side (Back button + Logo) */
+        .nav-left { display: flex; align-items: center; gap: 15px; }
+        
+        /* White SVG Back Button */
+        .back-btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: #fff; transition: transform 0.2s; }
+        .back-btn:hover { transform: translateX(-3px); }
+        .back-btn svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #fff; text-decoration: none; }
+        
+        .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
+        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #fff; }
+        .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .dropdown-menu.active { display: flex; }
+        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; }
+
+        /* Bio Header Layout */
+        .bio-header { background-color: #000; color: #fff; padding: 60px 40px 60px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; }
+        .bio-header img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid #fff; }
+        .bio-header-text h1 { font-size: 3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+        .bio-header-text p { font-size: 1.2rem; color: #aaa; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Content Layout */
+        .container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        .section-title { font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px; }
+        
+        .bio-content p { font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 25px; font-weight: 400; }
+
+        .ad-space { text-align: center; padding: 30px 0; margin: 40px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; color: #ccc; font-size: 0.8rem; text-transform: uppercase; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .bio-header { flex-direction: column; text-align: center; padding: 40px 20px; gap: 20px; }
+            .bio-header img { width: 180px; height: 180px; }
+            .bio-header-text h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <!-- Back Button -->
+            <a href="biopedia.html" class="back-btn" title="Go Back">
+                <svg viewBox="0 0 24 24">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <a href="index.html" class="logo">BlacknWhite</a>
+        </div>
+        
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="dropdown-menu" id="navMenu">
+            <a href="index.html">Home / Clothing</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="biopedia.html">BioPedia</a>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <header class="bio-header">
+        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=600&auto=format&fit=crop" alt="Jake P. Fresco">
+        <div class="bio-header-text">
+            <h1>Jake P. Fresco</h1>
+            <p>Actor</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <!-- Top Ad -->
+        <div class="ad-space">[ Advertisement Space - 728x90 ]</div>
+
+        <div class="bio-content">
+            <div class="section-title">About</div>
+            
+            <p>Already performing in front of family and relatives at the age of three, Jake Fresco knew that performing was for him. With his deep passion for musical theater, he extended his theater geek fan status to performer status and starred in Performedway hit musicals, such as The Gray Paint as Cal and The Little Master as Jeffrey Stone. These shows showcased his outstanding and convincing acting skills and strong vocals.</p>
+
+            <p>Jake Fresco has a Bachelor's degree in Theater Studies from Hexton University. He has also won various acting awards like the Omond Award as Best Actor in a Musical for the show Jukebox Jester, Lytton Awards Show as Best Supporting Actor for the musical Romeo's Juliet, and many others.</p>
+
+            <p>When he's not performing, he likes to stay at home like the homebody that he is. He also does volunteer work in Octagon Theater Charity as an acting coach to children and youths who want to do theater work in the future.</p>
+        </div>
+
+        <!-- Bottom Ad -->
+        <div class="ad-space">[ Advertisement Space - 728x90 ]</div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); }
+        }
+    </script>
+</body>
+</html>

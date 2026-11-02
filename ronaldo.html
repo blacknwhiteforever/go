@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristiano Ronaldo | BioPedia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #111; }
+        
+        /* Black Navbar */
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; background: #000; color: #fff; z-index: 100; position: sticky; top: 0; }
+        .nav-left { display: flex; align-items: center; gap: 15px; }
+        
+        .back-btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: #fff; transition: transform 0.2s; }
+        .back-btn:hover { transform: translateX(-3px); }
+        .back-btn svg { width: 24px; height: 24px; stroke: #fff; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+
+        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #fff; text-decoration: none; }
+        
+        .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
+        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #fff; }
+        .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .dropdown-menu.active { display: flex; }
+        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; }
+
+        /* Bio Header Layout */
+        .bio-header { background-color: #000; color: #fff; padding: 60px 40px 60px 40px; display: flex; align-items: center; justify-content: center; gap: 40px; }
+        .bio-header img { width: 250px; height: 250px; border-radius: 50%; object-fit: cover; border: 5px solid #fff; }
+        .bio-header-text h1 { font-size: 3rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+        .bio-header-text p { font-size: 1.2rem; color: #aaa; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Content Layout */
+        .container { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        .section-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin: 30px 0 20px 0; border-bottom: 2px solid #000; display: inline-block; padding-bottom: 5px; }
+        
+        .bio-content p { font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 20px; font-weight: 400; }
+        
+        /* Table Styling for Stats */
+        .stats-table { width: 100%; border-collapse: collapse; margin-bottom: 30px; font-size: 0.95rem; }
+        .stats-table th, .stats-table td { padding: 12px 15px; border-bottom: 1px solid #eee; text-align: left; }
+        .stats-table th { background-color: #fafafa; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.85rem; }
+        .stats-table tr:hover { background-color: #fafafa; }
+        
+        /* List Styling for Accolades */
+        .accolades-list { margin-left: 20px; margin-bottom: 30px; }
+        .accolades-list li { font-size: 1.05rem; line-height: 1.8; color: #333; margin-bottom: 10px; }
+
+        .ad-space { text-align: center; padding: 30px 0; margin: 40px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; color: #ccc; font-size: 0.8rem; text-transform: uppercase; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .bio-header { flex-direction: column; text-align: center; padding: 40px 20px; gap: 20px; }
+            .bio-header img { width: 180px; height: 180px; }
+            .bio-header-text h1 { font-size: 2rem; }
+            .stats-table { display: block; overflow-x: auto; white-space: nowrap; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="biopedia.html" class="back-btn" title="Go Back">
+                <svg viewBox="0 0 24 24">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </a>
+            <a href="index.html" class="logo">BlacknWhite</a>
+        </div>
+        
+        <div class="menu-icon" onclick="toggleMenu()">
+            <span></span><span></span><span></span>
+        </div>
+        <div class="dropdown-menu" id="navMenu">
+            <a href="index.html">Home / Clothing</a>
+            <a href="blogs.html">Blogs</a>
+            <a href="biopedia.html">BioPedia</a>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <header class="bio-header">
+        <img src="https://i.ibb.co.com/bRWfGHm1/Ronaldo-The-Legent.jpg" alt="Cristiano Ronaldo">
+        <div class="bio-header-text">
+            <h1>Cristiano Ronaldo</h1>
+            <p>Footballer • CR7</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="ad-space">[ Advertisement Space - 728x90 ]</div>
+
+        <div class="bio-content">
+            <div class="section-title">About</div>
+            <p>Cristiano Ronaldo dos Santos Aveiro (born 5 February 1985) is widely regarded as one of the greatest football players of all time. The 41-year-old Portuguese forward captains both the Saudi Pro League club Al-Nassr and the Portugal national team. Often designated by his moniker CR7, Ronaldo is the highest goalscorer in the history of professional football, standing on the verge of the historic milestone of 1,000 career goals.</p>
+
+            <div class="section-title">Current Career & Statistics</div>
+            <p>Ronaldo continues to play at a prolific rate. As of late 2026, his updated professional statistics highlight his ongoing role for club and country:</p>
+            <ul class="accolades-list">
+                <li><strong>Total Career Goals:</strong> 985 official goals in 1,343 senior appearances.</li>
+                <li><strong>Current Club Form (2026–27):</strong> Leading the line for Al-Nassr with 8 goals in 9 Saudi Pro League matches, recently securing a hat-trick in a 5–3 win against Al-Kholood.</li>
+                <li><strong>International Record:</strong> All-time top scorer in men's international football history with 146 goals for Portugal, having recently led his country through the 2026 FIFA World Cup.</li>
+            </ul>
+
+            <div class="section-title">Club Career Timeline</div>
+            <table class="stats-table">
+                <thead>
+                    <tr>
+                        <th>Club</th>
+                        <th>Years</th>
+                        <th>Apps</th>
+                        <th>Goals</th>
+                        <th>Key Achievements</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sporting CP</td>
+                        <td>2002–2003</td>
+                        <td>31</td>
+                        <td>5</td>
+                        <td>Breakthrough youth prospect</td>
+                    </tr>
+                    <tr>
+                        <td>Manchester United</td>
+                        <td>2003–2009</td>
+                        <td>292</td>
+                        <td>118</td>
+                        <td>3x PL, 1x UCL, 1st Ballon d'Or</td>
+                    </tr>
+                    <tr>
+                        <td>Real Madrid</td>
+                        <td>2009–2018</td>
+                        <td>438</td>
+                        <td>450</td>
+                        <td>All-time top scorer, 4x UCL</td>
+                    </tr>
+                    <tr>
+                        <td>Juventus</td>
+                        <td>2018–2021</td>
+                        <td>134</td>
+                        <td>101</td>
+                        <td>2x Serie A champion</td>
+                    </tr>
+                    <tr>
+                        <td>Man United (2nd)</td>
+                        <td>2021–2022</td>
+                        <td>54</td>
+                        <td>27</td>
+                        <td>Top scorer before exit</td>
+                    </tr>
+                    <tr>
+                        <td>Al-Nassr</td>
+                        <td>2023–Present</td>
+                        <td>160</td>
+                        <td>138</td>
+                        <td>Arab Club Champions Cup</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="section-title">Key Accolades & Trophies</div>
+            <ul class="accolades-list">
+                <li><strong>5x Ballon d'Or Winner</strong> (2008, 2013, 2014, 2016, 2017)</li>
+                <li><strong>5x UEFA Champions League Winner</strong> (1x Man United, 4x Real Madrid)</li>
+                <li><strong>UEFA Euro 2016 Champion</strong> — Guided Portugal to its first major trophy</li>
+                <li><strong>4x European Golden Shoe Winner</strong> & All-Time Top Scorer in UCL History (140 goals)</li>
+            </ul>
+
+            <div class="section-title">Personal Background & Legacy</div>
+            <p>Ronaldo was born in Funchal, Madeira, Portugal into a family that faced deep financial hardships. He overcame severe adversity in childhood—including being diagnosed with a racing heart condition at age 15 that required surgery—to debut professionally for Sporting Lisbon in 2002. Known for his legendary training ethic, elite athleticism, and strict physical discipline, he has translated his sporting success into unparalleled global fame, becoming the most followed individual on social media worldwide.</p>
+        </div>
+
+        <div class="ad-space">[ Advertisement Space - 728x90 ]</div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("navMenu");
+            if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); }
+        }
+    </script>
+</body>
+</html>
