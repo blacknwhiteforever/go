@@ -68,6 +68,7 @@
   "logo": "https://blacknwhiteforever.github.io/go/favicon.svg"
 }
 </script>
+<link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -154,5 +155,6 @@
     <!-- GLOBAL ADS SCRIPT -->
     
 <script src="ads.js"></script>
+<script>if("serviceWorker" in navigator){navigator.serviceWorker.register("sw.js");}</script>
 </body>
 </html>
