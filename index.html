@@ -3,22 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="yPxJs6fQW-GcYOID-p7sdYt0jwKjXNevIBfGc1GD2QI" />
-    
-    <!-- SEO Meta Tags -->
-    <title>BlacknWhite | Fashion, Models & Tech Gallery</title>
-    <meta name="description" content="Explore exclusive fashion photography, model galleries, celebrity biographies, and the latest AI tech tools on BlacknWhite.">
-    <meta name="keywords" content="fashion, models, celebrity biography, tech tools, AI, black and white fashion">
-    <link rel="canonical" href="https://blacknwhiteforever.github.io/go/index.html">
-    
-    <!-- Open Graph Tags for Social Media -->
-    <meta property="og:title" content="BlacknWhite | Visual Gallery">
-    <meta property="og:description" content="Curated fashion inspiration and bold visual stories.">
-    <meta property="og:image" content="https://i.ibb.co.com/QvzSPd2Z/20261102-123553.png">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <title>BlacknWhite | Shopping Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #111; display: flex; flex-direction: column; min-height: 100vh; }
@@ -26,13 +13,13 @@
         .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 100; }
         .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #000; text-decoration: none; }
         .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
-        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #000; transition: 0.3s; }
+        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #000; }
         .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; box-shadow: 0 10px 20px rgba(0,0,0,0.05); display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; }
         .dropdown-menu.active { display: flex; }
         .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; }
         .dropdown-menu a:hover { color: #999; }
 
-        .hero { text-align: center; padding: 80px 20px; background-color: #fafafa; border-bottom: 1px solid #eee; }
+        .hero { text-align: center; padding: 60px 20px; background-color: #fafafa; border-bottom: 1px solid #eee; }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 600; letter-spacing: 2px; margin-bottom: 15px; color: #111; }
         .hero p { font-size: 1rem; color: #666; letter-spacing: 1px; font-weight: 300; }
 
@@ -50,7 +37,6 @@
         .btn { display: block; width: 100%; background-color: #000; color: #fff; padding: 12px 0; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; border: 1px solid #000; transition: all 0.3s ease; cursor: pointer; }
         .btn:hover { background-color: #fff; color: #000; }
 
-        /* Footer for Internal Linking */
         footer { background: #000; color: #fff; padding: 40px 20px; text-align: center; margin-top: 50px; }
         .footer-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 20px; flex-wrap: wrap; }
         .footer-links a { color: #ccc; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
@@ -76,7 +62,8 @@
         <a href="index.html" class="logo">BlacknWhite</a>
         <div class="menu-icon" onclick="toggleMenu()"><span></span><span></span><span></span></div>
         <div class="dropdown-menu" id="navMenu">
-            <a href="index.html">Home / Clothing</a>
+            <a href="index.html">Home</a>
+            <a href="shop.html">BnW Shop</a> <!-- নতুন লিংক -->
             <a href="blogs.html">Blogs</a>
             <a href="tech.html">Tech Tools</a>
             <a href="biopedia.html">BioPedia</a>
@@ -84,8 +71,8 @@
     </nav>
 
     <header class="hero">
-        <h1>The Art of Monochrome</h1>
-        <p>Curated fashion inspiration and bold visual stories.</p>
+        <h1>Trending Picks</h1>
+        <p>Shop the latest styles and gadgets handpicked for you.</p>
     </header>
 
     <div class="main-content">
@@ -97,50 +84,39 @@
                 <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"></script>
             </div>
 
+            <!-- Shopping Grid -->
             <div class="grid">
                 <div class="card">
-                    <img src="https://i.ibb.co.com/NgGtthLq/1.jpg" alt="Black and White Fashion Model">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
+                    <img src="https://i.ibb.co.com/NgGtthLq/1.jpg" alt="Fashion Item">
+                    <div class="card-content"><a href="YOUR_AFFILIATE_LINK" class="btn">Order Now</a></div>
                 </div>
                 <div class="card">
-                    <img src="https://i.ibb.co.com/Gv9F9M3t/black-dress.jpg" alt="Elegant Black Dress Model">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
+                    <img src="https://i.ibb.co.com/Gv9F9M3t/black-dress.jpg" alt="Black Dress">
+                    <div class="card-content"><a href="YOUR_AFFILIATE_LINK" class="btn">Order Now</a></div>
                 </div>
                 <div class="card">
-                    <img src="https://i.ibb.co.com/4gZLpG7Q/Shanaya-Kapoor-4.jpg" alt="Shanaya Kapoor Fashion">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
+                    <img src="https://i.ibb.co.com/4gZLpG7Q/Shanaya-Kapoor-4.jpg" alt="Celebrity Look">
+                    <div class="card-content"><a href="YOUR_AFFILIATE_LINK" class="btn">Order Now</a></div>
                 </div>
                 <div class="card">
-                    <img src="https://i.ibb.co.com/H6fPXjY/Shanaya-Kapoor-3.jpg" alt="Shanaya Kapoor Style">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
+                    <img src="https://i.ibb.co.com/H6fPXjY/Shanaya-Kapoor-3.jpg" alt="Fashion Style">
+                    <div class="card-content"><a href="YOUR_AFFILIATE_LINK" class="btn">Order Now</a></div>
                 </div>
                 <div class="card">
-                    <img src="https://i.ibb.co.com/Q3wwYKnd/Shanaya-Kapoor.jpg" alt="Shanaya Kapoor Monochrome">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
+                    <img src="https://i.ibb.co.com/Q3wwYKnd/Shanaya-Kapoor.jpg" alt="Monochrome Look">
+                    <div class="card-content"><a href="YOUR_AFFILIATE_LINK" class="btn">Order Now</a></div>
                 </div>
                 <div class="card">
-                    <img src="https://i.ibb.co.com/SDYKCdhm/Shanaya-Kapoor-1.jpg" alt="Shanaya Kapoor Latest Look">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
+                    <img src="https://i.ibb.co.com/SDYKCdhm/Shanaya-Kapoor-1.jpg" alt="Latest Style">
+                    <div class="card-content"><a href="YOUR_AFFILIATE_LINK" class="btn">Order Now</a></div>
                 </div>
                 <div class="card">
-                    <img src="https://i.ibb.co.com/PsSMj08V/Shanaya-kapoor-2.jpg" alt="Shanaya Kapoor Photoshoot">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
+                    <img src="https://i.ibb.co.com/PsSMj08V/Shanaya-kapoor-2.jpg" alt="Model Photoshoot">
+                    <div class="card-content"><a href="YOUR_AFFILIATE_LINK" class="btn">Order Now</a></div>
                 </div>
                 <div class="card">
-                    <img src="https://i.ibb.co.com/LXv8bbsK/635429828717827232.jpg" alt="Celebrity Fashion Style">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
-                </div>
-                <div class="card">
-                    <img src="https://i.ibb.co.com/qLmxs65B/image.jpg" alt="Monochrome Outfit Ideas">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
-                </div>
-                <div class="card">
-                    <img src="https://i.ibb.co.com/Fr1wzj0/83a29fcac68c5cec1b4007ecb39c00fa.jpg" alt="Fashion Model Gallery">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
-                </div>
-                <div class="card">
-                    <img src="https://i.ibb.co.com/vvZfq6hn/3c7ea0a2b0e078542237e3c364fabd82.jpg" alt="Black and White Aesthetic">
-                    <div class="card-content"><a href="#" class="btn">Order Now</a></div>
+                    <img src="https://i.ibb.co.com/LXv8bbsK/635429828717827232.jpg" alt="Fashion Style">
+                    <div class="card-content"><a href="YOUR_AFFILIATE_LINK" class="btn">Order Now</a></div>
                 </div>
             </div>
             
@@ -156,14 +132,12 @@
     <footer>
         <div class="footer-links">
             <a href="index.html">Home</a>
+            <a href="shop.html">BnW Shop</a>
             <a href="blogs.html">Blogs</a>
             <a href="biopedia.html">BioPedia</a>
             <a href="tech.html">Tech Tools</a>
-            <a href="models.html">Models Gallery</a>
         </div>
-        <div class="footer-text">
-            &copy; 2026 BlacknWhite. All rights reserved.
-        </div>
+        <div class="footer-text">&copy; 2026 BlacknWhite. All rights reserved.</div>
     </footer>
 
     <script>

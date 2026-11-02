@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clothing Shop | BlacknWhite</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #111; }
+        
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 100; }
+        .nav-left { display: flex; align-items: center; gap: 15px; }
+        .back-btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: #111; }
+        .back-btn svg { width: 24px; height: 24px; stroke: #111; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #000; text-decoration: none; }
+        .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
+        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #000; }
+        .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .dropdown-menu.active { display: flex; }
+        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; }
+
+        .hero { text-align: center; padding: 50px 20px; background-color: #fafafa; border-bottom: 1px solid #eee; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 600; margin-bottom: 10px; }
+        
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+        .ad-container { text-align: center; margin: 20px auto 40px auto; display: flex; justify-content: center; overflow: hidden; }
+
+        .grid { column-count: 4; column-gap: 20px; }
+        .card { background: #fff; text-align: center; break-inside: avoid; margin-bottom: 20px; display: inline-block; width: 100%; border: 1px solid #f0f0f0; transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .card img { width: 100%; height: auto; display: block; }
+        
+        .card-content { padding: 15px 10px; }
+        .btn { display: block; width: 100%; background-color: #000; color: #fff; padding: 12px 0; text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; border: 1px solid #000; transition: all 0.3s ease; cursor: pointer; }
+        .btn:hover { background-color: #fff; color: #000; }
+
+        @media (max-width: 1024px) { .grid { column-count: 3; } }
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .hero h1 { font-size: 1.8rem; }
+            .grid { column-count: 2; column-gap: 10px; }
+            .card { margin-bottom: 10px; }
+            .btn { font-size: 0.75rem; padding: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="shop.html" class="back-btn"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></a>
+            <a href="index.html" class="logo">BlacknWhite</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        <div class="dropdown-menu" id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="shop.html">BnW Shop</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>Clothing Collection</h1>
+    </header>
+
+    <div class="container">
+        <div class="ad-container">
+            <script type="text/javascript">
+              atOptions = { 'key' : 'f96edce5347f04ad69e124af5a3e443a', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"></script>
+        </div>
+
+        <div class="grid">
+            <div class="card">
+                <img src="https://i.ibb.co.com/NgGtthLq/1.jpg" alt="Fashion Look">
+                <div class="card-content"><a href="YOUR_CLOTHING_AFFILIATE_LINK" class="btn">Order Now</a></div>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/Gv9F9M3t/black-dress.jpg" alt="Black Dress">
+                <div class="card-content"><a href="YOUR_CLOTHING_AFFILIATE_LINK" class="btn">Order Now</a></div>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/4gZLpG7Q/Shanaya-Kapoor-4.jpg" alt="Celebrity Look">
+                <div class="card-content"><a href="YOUR_CLOTHING_AFFILIATE_LINK" class="btn">Order Now</a></div>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/H6fPXjY/Shanaya-Kapoor-3.jpg" alt="Fashion Style">
+                <div class="card-content"><a href="YOUR_CLOTHING_AFFILIATE_LINK" class="btn">Order Now</a></div>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/Q3wwYKnd/Shanaya-Kapoor.jpg" alt="Monochrome Look">
+                <div class="card-content"><a href="YOUR_CLOTHING_AFFILIATE_LINK" class="btn">Order Now</a></div>
+            </div>
+            <div class="card">
+                <img src="https://i.ibb.co.com/SDYKCdhm/Shanaya-Kapoor-1.jpg" alt="Latest Style">
+                <div class="card-content"><a href="YOUR_CLOTHING_AFFILIATE_LINK" class="btn">Order Now</a></div>
+            </div>
+        </div>
+        
+        <div class="ad-container" style="margin-top: 20px;">
+            <script type="text/javascript">
+              atOptions = { 'key' : 'f96edce5347f04ad69e124af5a3e443a', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"></script>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() { var menu = document.getElementById("navMenu"); if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); } }
+    </script>
+</body>
+</html>
