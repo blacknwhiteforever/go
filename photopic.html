@@ -33,7 +33,7 @@
 
         .container { max-width: 1400px; margin: 0 auto; padding: 0 20px 60px 20px; }
         
-        /* Ad Container Styles for Scaling */
+        /* Ad Container Styles */
         .ad-container { width: 100%; display: flex; justify-content: center; overflow: hidden; margin: 20px 0; break-inside: avoid; }
         .ad-wrapper { width: 728px; height: 90px; display: flex; justify-content: center; }
         .ad-wrapper iframe { border: none; overflow: hidden; }
@@ -41,6 +41,7 @@
         /* Layouts */
         .grid-pinterest { column-count: 4; column-gap: 20px; }
         .grid-pinterest .photo-card { break-inside: avoid; margin-bottom: 20px; display: inline-block; width: 100%; border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; background: #f0f0f0; }
+        .grid-pinterest .injected-ad { break-inside: avoid; display: inline-block; width: 100%; margin-bottom: 20px; }
         
         .grid-masonry { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
         .grid-masonry .photo-card { border-radius: 12px; overflow: hidden; position: relative; cursor: pointer; height: 350px; background: #f0f0f0; }
@@ -73,7 +74,7 @@
             .navbar { padding: 15px 20px; }
             .page-header h1 { font-size: 2rem; }
             .grid-pinterest { column-count: 2; column-gap: 10px; }
-            .grid-pinterest .photo-card { margin-bottom: 10px; }
+            .grid-pinterest .photo-card, .grid-pinterest .injected-ad { margin-bottom: 10px; }
             .grid-masonry { grid-template-columns: repeat(2, 1fr); gap: 10px; }
             .grid-masonry .photo-card { height: 250px; }
             .grid-reels .photo-card { height: 70vh; border-radius: 12px; }
@@ -85,9 +86,10 @@
             .ad-wrapper { 
                 transform: scale(0.45); 
                 transform-origin: top center; 
-                height: 40px; /* Compensate for scaled height */
+                height: 40px; 
                 margin-bottom: -45px; 
             }
+            .injected-ad { height: 60px; /* Adjust height for mobile injected ads */ }
         }
     </style>
 </head>
@@ -160,15 +162,12 @@
         <div class="modal-box">
             <h2>Enjoying PhotoPic?</h2>
             <p>Please wait for the ad to finish. The gallery will unlock automatically.</p>
-            
-            <!-- Direct Adsterra Script for Modal -->
             <div class="modal-ad-space">
                 <script type="text/javascript">
                   atOptions = { 'key' : '23d98862449809c04e4c9daf55c3d963', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
                 </script>
                 <script type="text/javascript" src="https://bauval.org/22/23d98862449809c04e4c9daf55c3d963"></script>
             </div>
-
             <div class="countdown-text">Unlocking in <span id="timer">10</span> seconds...</div>
         </div>
     </div>
@@ -218,31 +217,13 @@
                 if ((index + 1) % 3 === 0 && index !== data.length - 1) {
                     const adDiv = document.createElement("div");
                     adDiv.className = "ad-container injected-ad";
-                    if (gridContainer.classList.contains("grid-pinterest")) {
-                        adDiv.style.display = "inline-block";
-                        adDiv.style.width = "100%";
-                        adDiv.style.marginBottom = "20px";
-                    }
                     
-                    // Create wrapper for scaling
+                    // Using direct iframe src to prevent document.write layout breaks
                     adDiv.innerHTML = `
                         <div class="ad-wrapper" style="width: 100%;">
-                            <script type="text/javascript">
-                              atOptions = { 'key' : 'f96edce5347f04ad69e124af5a3e443a', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-                            <\/script>
-                            <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"><\/script>
+                            <iframe src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a" width="728" height="90" frameborder="0" scrolling="no" style="border:none; overflow:hidden;"></iframe>
                         </div>
                     `;
-                    
-                    // We must use document.write to execute the Adsterra script inside the dynamically injected div
-                    const scripts = adDiv.querySelectorAll('script');
-                    scripts.forEach(oldScript => {
-                        const newScript = document.createElement('script');
-                        Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-                        newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-                        oldScript.parentNode.replaceChild(newScript, oldScript);
-                    });
-
                     gridContainer.appendChild(adDiv);
                 }
             });
