@@ -1,0 +1,26 @@
+[
+  {
+    "id": "how-to-screenshot-windows",
+    "question": "How to Take a Screenshot on Windows 11?",
+    "category": "Tech",
+    "date": "Nov 2, 2026",
+    "short_desc": "Learn the fastest ways to capture your screen on Windows 11 using keyboard shortcuts and built-in tools.",
+    "content": "<p>Taking a screenshot on Windows 11 is very easy. Here are the top 3 methods:</p><h3>Method 1: Using Snipping Tool</h3><p>Press <strong>Windows + Shift + S</strong>. Your screen will dim, and you can drag to select the area you want to capture. It will be copied to your clipboard.</p><h3>Method 2: Print Screen Key</h3><p>Press the <strong>PrtScn</strong> button. This copies the entire screen to your clipboard.</p><h3>Method 3: Game Bar</h3><p>Press <strong>Windows + G</strong> to open the Game Bar, then click the camera icon to take a screenshot.</p>"
+  },
+  {
+    "id": "what-is-my-ip",
+    "question": "What is My IP Address and How to Check It?",
+    "category": "Internet",
+    "date": "Nov 2, 2026",
+    "short_desc": "Understand what an IP address is and find out how you can check your public IP address instantly.",
+    "content": "<p>An IP (Internet Protocol) address is a unique string of numbers separated by periods that identifies each computer using the Internet Protocol to communicate over a network.</p><h3>How to check your IP?</h3><p>You can simply Google the word <strong>'What is my IP'</strong> and Google will show it at the top. Alternatively, you can visit websites like whatismyip.com.</p><h3>Why hide your IP?</h3><p>If you want to protect your privacy, you can use a VPN (Virtual Private Network) to mask your real IP address.</p>"
+  },
+  {
+    "id": "best-ai-for-coding",
+    "question": "What is the Best AI Tool for Coding in 2026?",
+    "category": "AI",
+    "date": "Nov 2, 2026",
+    "short_desc": "Discover the top AI assistants like ChatGPT, Claude, and GitHub Copilot that can write code for you.",
+    "content": "<p>Artificial Intelligence has completely changed programming. Here are the best AI tools for coding:</p><ul><li><strong>GitHub Copilot:</strong> Best for real-time autocomplete inside VS Code.</li><li><strong>ChatGPT (GPT-4o):</strong> Great for generating boilerplate code and debugging errors.</li><li><strong>Claude 3.5 Sonnet:</strong> Currently the best for understanding large codebases.</li></ul><p>To learn more, check our Tech Tools section!</p>"
+  }
+]

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... | BnW Answers</title>
+    <!-- Clean Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; color: #222; line-height: 1.7; }
+        
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 100; }
+        .nav-left { display: flex; align-items: center; gap: 15px; }
+        .back-btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: #111; }
+        .back-btn svg { width: 24px; height: 24px; stroke: #111; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .logo { font-size: 1.2rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: #000; text-decoration: none; }
+        .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
+        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #000; }
+        .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .dropdown-menu.active { display: flex; }
+        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; padding: 5px 0; font-weight: 600; }
+
+        .article-header { text-align: center; padding: 60px 20px; background-color: #fafafa; border-bottom: 1px solid #eee; }
+        .article-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 15px; line-height: 1.3; color: #000; }
+        .meta { color: #888; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; }
+        
+        .container { max-width: 750px; margin: 40px auto; padding: 0 20px 80px 20px; }
+        
+        /* Clean Content Formatting */
+        .article-content p { font-size: 1.1rem; color: #333; margin-bottom: 20px; }
+        .article-content h3 { font-size: 1.3rem; font-weight: 600; color: #000; margin: 30px 0 15px 0; }
+        .article-content ul, .article-content ol { margin-left: 20px; margin-bottom: 20px; }
+        .article-content li { font-size: 1.1rem; color: #333; margin-bottom: 10px; }
+        
+        .loading { text-align: center; font-size: 1.2rem; color: #888; padding: 50px 0; }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .article-header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="blogs.html" class="back-btn" title="Go Back"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></a>
+            <a href="index.html" class="logo">BlacknWhite</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        <div class="dropdown-menu" id="navMenu">
+            <a href="index.html">Home / Clothing</a>
+            <a href="blogs.html">BnW Answers</a>
+            <a href="tech.html">Tech</a>
+        </div>
+    </nav>
+
+    <div id="articleContainer">
+        <div class="loading">Loading Answer...</div>
+    </div>
+
+    <script>
+        function toggleMenu() { var menu = document.getElementById("navMenu"); if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); } }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const answerId = urlParams.get('id');
+
+        if (!answerId) {
+            document.getElementById("articleContainer").innerHTML = "<div class='loading'>Error: No Answer ID provided.</div>";
+        } else {
+            fetch('answers.json')
+                .then(res => res.json())
+                .then(data => {
+                    const answer = data.find(a => a.id === answerId);
+                    
+                    if (!answer) {
+                        document.getElementById("articleContainer").innerHTML = "<div class='loading'>Answer not found.</div>";
+                        return;
+                    }
+
+                    // Update SEO Meta Tags
+                    document.title = answer.question + " | BnW Answers";
+                    
+                    // Add Schema Markup for FAQ (Helps Google Index better)
+                    const schema = {
+                        "@context": "https://schema.org",
+                        "@type": "FAQPage",
+                        "mainEntity": [{
+                            "@type": "Question",
+                            "name": answer.question,
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": answer.content
+                            }
+                        }]
+                    };
+                    const script = document.createElement('script');
+                    script.type = "application/ld+json";
+                    script.text = JSON.stringify(schema);
+                    document.head.appendChild(script);
+
+                    // Build HTML
+                    let html = `
+                        <header class="article-header">
+                            <h1>${answer.question}</h1>
+                            <div class="meta">${answer.category} • ${answer.date}</div>
+                        </header>
+                        <div class="container">
+                            <div class="article-content">
+                                ${answer.content}
+                            </div>
+                        </div>
+                    `;
+
+                    document.getElementById("articleContainer").innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading data:', error);
+                    document.getElementById("articleContainer").innerHTML = "<div class='loading'>Failed to load answer.</div>";
+                });
+        }
+    </script>
+
+    <!-- Global Ads Script -->
+    <script src="ads.js"></script>
+</body>
+</html>
