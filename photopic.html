@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhotoPic | Visual Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background-color: #ffffff; color: #111; }
+        
+        .navbar { display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid #eee; position: sticky; top: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(5px); z-index: 100; }
+        .nav-left { display: flex; align-items: center; gap: 15px; }
+        .back-btn { display: flex; align-items: center; justify-content: center; text-decoration: none; color: #111; }
+        .back-btn svg { width: 24px; height: 24px; stroke: #111; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .logo { font-size: 1.2rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #000; text-decoration: none; }
+        .menu-icon { cursor: pointer; display: flex; flex-direction: column; gap: 5px; z-index: 101; }
+        .menu-icon span { display: block; width: 25px; height: 2px; background-color: #000; }
+        .dropdown-menu { position: absolute; top: 70px; right: 20px; background: #fff; border: 1px solid #eee; display: none; flex-direction: column; padding: 20px; gap: 15px; min-width: 200px; z-index: 99; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .dropdown-menu.active { display: flex; }
+        .dropdown-menu a { text-decoration: none; color: #333; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1.5px; padding: 5px 0; }
+
+        .page-header { text-align: center; padding: 60px 20px; background-color: #fafafa; border-bottom: 1px solid #eee; }
+        .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 600; letter-spacing: 2px; margin-bottom: 10px; }
+        .page-header p { color: #666; font-size: 1rem; font-weight: 300; }
+
+        .container { max-width: 1400px; margin: 40px auto; padding: 0 20px; }
+        
+        .ad-container { text-align: center; margin: 20px auto 40px auto; display: flex; justify-content: center; overflow: hidden; }
+
+        /* Pinterest Masonry Layout */
+        .grid { column-count: 4; column-gap: 20px; }
+        
+        .photo-card { 
+            break-inside: avoid; 
+            margin-bottom: 20px; 
+            display: inline-block; 
+            width: 100%; 
+            border-radius: 10px; 
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .photo-card img { 
+            width: 100%; 
+            height: auto; 
+            display: block; 
+            transition: transform 0.3s ease;
+        }
+        
+        .photo-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .photo-card:hover .photo-overlay { opacity: 1; }
+        
+        .photo-overlay span {
+            background: #fff;
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 1024px) { .grid { column-count: 3; } }
+        @media (max-width: 768px) {
+            .navbar { padding: 15px 20px; }
+            .page-header h1 { font-size: 1.8rem; }
+            .grid { column-count: 2; column-gap: 10px; }
+            .photo-card { margin-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="index.html" class="back-btn"><svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg></a>
+            <a href="index.html" class="logo">BlacknWhite</a>
+        </div>
+        <div class="menu-icon" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+        <div class="dropdown-menu" id="navMenu">
+            <a href="index.html">Home</a>
+            <a href="shop.html">BnW Shop</a>
+            <a href="photopic.html">PhotoPic</a>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>PhotoPic</h1>
+        <p>Discover visual inspiration and aesthetics.</p>
+    </header>
+
+    <div class="container">
+        <!-- Adsterra 728x90 Top Banner -->
+        <div class="ad-container">
+            <script type="text/javascript">
+              atOptions = { 'key' : 'f96edce5347f04ad69e124af5a3e443a', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"></script>
+        </div>
+
+        <div class="grid">
+            <!-- Images Grid -->
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/NgGtthLq/1.jpg" alt="Aesthetic">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/Gv9F9M3t/black-dress.jpg" alt="Black Dress">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/4gZLpG7Q/Shanaya-Kapoor-4.jpg" alt="Celebrity">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/H6fPXjY/Shanaya-Kapoor-3.jpg" alt="Fashion">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/Q3wwYKnd/Shanaya-Kapoor.jpg" alt="Monochrome">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/SDYKCdhm/Shanaya-Kapoor-1.jpg" alt="Style">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/PsSMj08V/Shanaya-kapoor-2.jpg" alt="Photoshoot">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/LXv8bbsK/635429828717827232.jpg" alt="Fashion">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/qLmxs65B/image.jpg" alt="Outfit">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/Fr1wzj0/83a29fcac68c5cec1b4007ecb39c00fa.jpg" alt="Gallery">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+            <div class="photo-card">
+                <img src="https://i.ibb.co.com/vvZfq6hn/3c7ea0a2b0e078542237e3c364fabd82.jpg" alt="Aesthetic">
+                <div class="photo-overlay"><span>View</span></div>
+            </div>
+        </div>
+        
+        <!-- Adsterra 728x90 Bottom Banner -->
+        <div class="ad-container" style="margin-top: 20px;">
+            <script type="text/javascript">
+              atOptions = { 'key' : 'f96edce5347f04ad69e124af5a3e443a', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
+            </script>
+            <script type="text/javascript" src="https://bauval.org/22/f96edce5347f04ad69e124af5a3e443a"></script>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() { var menu = document.getElementById("navMenu"); if (menu.classList.contains("active")) { menu.classList.remove("active"); } else { menu.classList.add("active"); } }
+    </script>
+</body>
+</html>
